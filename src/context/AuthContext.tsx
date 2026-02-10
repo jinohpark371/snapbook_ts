@@ -60,7 +60,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 export function useAuth(): AuthContextType {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error('AuthProvider 내부에서만 사용 가능');
   }
   return context;
 }
