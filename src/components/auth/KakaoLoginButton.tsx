@@ -1,5 +1,4 @@
-﻿import React from 'react';
-import styled from 'styled-components';
+﻿import styled from 'styled-components';
 import { kakaoAuthService } from '../../api/services/kakaoAuthService';
 import { BaseButton } from '../common/Button';
 import theme from '../../styles/theme';
