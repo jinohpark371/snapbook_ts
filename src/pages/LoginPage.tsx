@@ -18,9 +18,7 @@ export default function LoginPage(): JSX.Element {
           {/* 로고 이미지 */}
           <img src={logoImg} alt="SNAPBOOK 로고" />
         </div>
-
-        {/* 식별 코드 전달 */}
-        <KakaoLoginButton slug={slug} />
+        <KakaoLoginButton slug={slug} /> {/*식별코드 전달*/}
       </div>
     </Container>
   );

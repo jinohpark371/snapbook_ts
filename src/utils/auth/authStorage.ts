@@ -1,4 +1,4 @@
-import normalizeAuthResponse from '../../api/normalizeAuthResponse';
+import normalizeAuthResponse from './normalizeAuthResponse';
 
 const STORAGE_KEY = 'authData';
 
