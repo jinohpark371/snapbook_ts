@@ -3,11 +3,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { kakaoAuthService } from '../api/services/kakaoAuthService';
 import { authStorage } from '../utils/auth/authStorage';
 import { useAuth } from '../context/AuthContext';
-import type { AuthResponse } from '../domain/auth/auth.types';
-
-type KakaoAuthResponse = AuthResponse & {
-  authStatus?: 'SIGNUP_REQUIRED' | string | null;
-};
+import type { KakaoLoginResponse } from '../domain/auth/auth.types';
 
 export const useHandleAuthCode = () => {
   const { login } = useAuth();
@@ -16,8 +12,9 @@ export const useHandleAuthCode = () => {
 
   // 링크 접속 시 식별코드 읽기
   const slug = new URLSearchParams(location.search).get('state');
-  return useMutation<KakaoAuthResponse, unknown, string>({
-    mutationFn: (code) => kakaoAuthService.exchangeCodeForToken(code) as Promise<KakaoAuthResponse>,
+  return useMutation<KakaoLoginResponse, unknown, string>({
+    mutationFn: (code) =>
+      kakaoAuthService.exchangeCodeForToken(code) as Promise<KakaoLoginResponse>,
     onSuccess: (data) => {
       // 로그인 후 회원 정보 전역 상태로 저장
       login(data);
