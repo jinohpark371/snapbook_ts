@@ -1,7 +1,7 @@
 // 사용자 정보 타입
 export interface User {
-  name: string | null;
-  phoneNumber: string | null;
+  name?: string;
+  phoneNumber?: string;
   userType: string | null;
-  userId: string | null;
+  userId: number | null;
 }
