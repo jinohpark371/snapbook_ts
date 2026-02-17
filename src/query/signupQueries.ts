@@ -3,11 +3,11 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { signupService } from '../api/services/signupService';
 import { authStorage } from '../utils/auth/authStorage';
 import { useAuth } from '../context/AuthContext';
-import type { KakaoLoginResponse } from '../domain/auth/auth.types';
 import type {
   CustomerSignupPayload,
   OwnerSignupPayload,
   ShopInfoPayload,
+  SignupApiResponse,
 } from '../domain/signup/signup.types';
 
 export const useSignupCustomer = () => {
@@ -18,7 +18,7 @@ export const useSignupCustomer = () => {
   // 매장 식별 코드
   const slug = new URLSearchParams(location.search).get('slug');
 
-  return useMutation<KakaoLoginResponse, unknown, CustomerSignupPayload>({
+  return useMutation<SignupApiResponse, unknown, CustomerSignupPayload>({
     mutationFn: (payload) => signupService.signupCustomer(payload),
     onSuccess: (data) => {
       // 고객으로 회원가입 성공시 기존 데이터 다 날리기
@@ -41,7 +41,7 @@ export const useSignupOwner = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  return useMutation<KakaoLoginResponse, unknown, OwnerSignupPayload>({
+  return useMutation<SignupApiResponse, unknown, OwnerSignupPayload>({
     mutationFn: (payload) => signupService.signupOwner(payload),
     onSuccess: (data) => {
       // 점주로 회원가입 성공시 기존 데이터 다 날리기

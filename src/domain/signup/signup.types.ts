@@ -1,3 +1,16 @@
+export type SignupRole = 'customer' | 'owner';
+
+export type SignupApiResponse = {
+  userType: 'CUSTOMER' | 'OWNER';
+  userId: number;
+  name: string;
+  phoneNumber: string;
+  tokens: {
+    accessToken: string;
+    refreshToken: string;
+  };
+};
+
 export type CustomerSignupPayload = {
   name: string;
   phoneNumber: string;
@@ -11,6 +24,15 @@ export type OwnerSignupPayload = {
 };
 
 export type ShopInfoPayload = {
-  shopName: string;
-  [key: string]: unknown;
+  businessName: string;
+  address: string;
+  businessNumber: string;
+};
+
+export type ShopInfoResponse = {
+  ownerId: number;
+  shopId: number;
+  businessName: string;
+  address: string;
+  businessNumber: string;
 };
