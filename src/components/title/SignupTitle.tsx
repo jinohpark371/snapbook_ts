@@ -1,5 +1,6 @@
 import styled from 'styled-components';
+import { BaseTitle } from '../common/BaseTitle';
 
-export const SignupTitle = styled.h1.attrs({
-  className: 'mb-[73px] text-[30px] font-semibold border-b-2',
+export const SignupTitle = styled(BaseTitle).attrs({
+  className: 'mb-[73px] border-b-2',
 })``;
