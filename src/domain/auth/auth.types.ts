@@ -1,3 +1,5 @@
+export type UserType = 'CUSTOMER' | 'OWNER';
+
 export interface KakaoLoginResponse {
   accessToken: string;
   refreshToken: string;

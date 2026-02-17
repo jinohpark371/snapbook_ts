@@ -1,0 +1,30 @@
+import styled, { css } from 'styled-components';
+import { BaseButton } from '../common/Button';
+import theme from '../../styles/theme';
+
+interface SignupButtonProps {
+  $isSelected?: boolean;
+}
+
+const SignupRoleButton = styled(BaseButton).attrs({
+  className: 'w-[143px] font-semibold',
+  $width: '143px',
+  $height: '55px',
+  $fontSize: '19px',
+})<SignupButtonProps>`
+  background-color: ${theme.colors.gray[20]};
+  color: ${theme.colors.black[75]};
+
+  ${({ $isSelected }) =>
+    $isSelected &&
+    css`
+      background-color: ${theme.colors.highlight[10]};
+      color: ${theme.colors.highlight.DEFAULT};
+      border: 2px solid ${theme.colors.highlight.DEFAULT};
+    `}
+`;
+
+export const SignupButton = {
+  Customer: SignupRoleButton,
+  Owner: SignupRoleButton,
+};
