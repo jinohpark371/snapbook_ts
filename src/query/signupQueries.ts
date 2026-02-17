@@ -7,6 +7,7 @@ import type {
   CustomerSignupPayload,
   OwnerSignupPayload,
   ShopInfoPayload,
+  ShopInfoResponse,
   SignupApiResponse,
 } from '../domain/signup/signup.types';
 
@@ -60,7 +61,7 @@ export const useSignupOwner = () => {
 export const useRegisterShopInfo = () => {
   const navigate = useNavigate();
 
-  return useMutation<unknown, unknown, ShopInfoPayload>({
+  return useMutation<ShopInfoResponse, Error, ShopInfoPayload>({
     mutationFn: (payload) => signupService.registerShopInfo(payload),
     onSuccess: () => {
       navigate('/');
