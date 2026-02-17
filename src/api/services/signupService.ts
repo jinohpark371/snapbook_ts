@@ -27,6 +27,6 @@ export const signupService: SignupService = {
   // 점주 가게정보 추가 회원가입 요청
   registerShopInfo: async (payload) => {
     const res = await axiosClient.post('/shop', payload);
-    return res.data as unknown;
+    return res.data as ShopInfoResponse;
   },
 };
