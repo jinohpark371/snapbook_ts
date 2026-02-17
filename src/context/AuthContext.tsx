@@ -3,11 +3,14 @@ import type { ReactNode, FC } from 'react';
 import { authStorage } from '../utils/auth/authStorage';
 import type { User } from '@/domain/auth/user';
 import type { KakaoLoginResponse } from '@/domain/auth/auth.types';
+import type { SignupApiResponse } from '@/domain/signup/signup.types';
+
+type LoginResponse = KakaoLoginResponse | SignupApiResponse;
 
 // Context value 타입
 interface AuthContextType {
   auth: User | null;
-  login: (response: KakaoLoginResponse) => void;
+  login: (response: LoginResponse) => void;
   logout: () => void;
 }
 
@@ -31,7 +34,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   }, []);
 
   // 로그인 후 받은 응답으로 토큰을 제외한 나머지 사용자 정보 상태만 관리
-  const login = (response: KakaoLoginResponse): void => {
+  const login = (response: LoginResponse): void => {
     if (!response) return;
     console.log(response);
     // 화면에서 관리할 사용자 정보만 설정 (토큰 제외)
