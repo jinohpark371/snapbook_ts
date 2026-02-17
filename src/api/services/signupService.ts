@@ -3,24 +3,25 @@ import type {
   CustomerSignupPayload,
   OwnerSignupPayload,
   ShopInfoPayload,
+  ShopInfoResponse,
+  SignupApiResponse,
 } from '../../domain/signup/signup.types';
-import type { KakaoLoginResponse } from '../../domain/auth/auth.types';
 
 type SignupService = {
-  signupCustomer: (payload: CustomerSignupPayload) => Promise<KakaoLoginResponse>;
-  signupOwner: (payload: OwnerSignupPayload) => Promise<KakaoLoginResponse>;
-  registerShopInfo: (payload: ShopInfoPayload) => Promise<unknown>;
+  signupCustomer: (payload: CustomerSignupPayload) => Promise<SignupApiResponse>;
+  signupOwner: (payload: OwnerSignupPayload) => Promise<SignupApiResponse>;
+  registerShopInfo: (payload: ShopInfoPayload) => Promise<ShopInfoResponse>;
 };
 
 export const signupService: SignupService = {
   signupCustomer: async (payload) => {
     const res = await axiosClient.post('/user/customer/signup', payload);
-    return res.data as KakaoLoginResponse;
+    return res.data as SignupApiResponse;
   },
 
   signupOwner: async (payload) => {
     const res = await axiosClient.post('/user/owner/signup', payload);
-    return res.data as KakaoLoginResponse;
+    return res.data as SignupApiResponse;
   },
 
   // 점주 가게정보 추가 회원가입 요청
